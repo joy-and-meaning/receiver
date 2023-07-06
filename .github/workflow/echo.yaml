@@ -1,0 +1,15 @@
+# Copyright Contributors to the Open Cluster Management project
+
+name: receive
+on:
+    repository_dispatch:
+        types: [changes]
+
+jobs:
+    log:
+        name: print changes
+        runs-on: ubuntu-latest
+        steps:
+            - name: print changes
+              run: |
+                  echo "changes triggered by {{ github.event.client_payload.repository.full_name }}"
